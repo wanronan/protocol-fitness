@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#071522">
-  <meta name="description" content="Wanderson Performance: treino, dieta e evolução.">
-  <title>Wanderson Performance</title>
+  <meta name="theme-color" content="#0A0D12">
+  <meta name="description" content="Treino de ganho de volume com prioridade em pernas.">
+  <title>Protocol Fitness</title>
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="assets/icons/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
@@ -16,160 +15,69 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <a class="brand" href="#dashboard" data-tab-target="dashboard" aria-label="Início">
-        <span class="brand-symbol">WP</span>
-        <span class="brand-copy"><strong>WANDERSON PERFORMANCE</strong><small>TREINO • DIETA • EVOLUÇÃO</small></span>
+      
+      <a class="brand" href="index.html" aria-label="Página inicial">
+        <img class="brand-logo" src="assets/icons/protocol-fitness-logo.png" alt="Protocol Fitness">
+        <span><strong>PROTOCOL FITNESS</strong><small>TREINO E EVOLUÇÃO</small></span>
       </a>
-      <button class="install-btn" id="installButton" hidden aria-label="Instalar aplicativo">Instalar</button>
+      <button class="icon-button" id="installButton" hidden aria-label="Instalar aplicativo">＋</button>
     </header>
 
-    <main class="page">
-      <section id="dashboard" class="tab-panel active" aria-labelledby="dashboard-title">
-        <article class="hero-panel">
-          <div class="hero-copy">
-            <span class="eyebrow">PROTOCOLO ATUAL</span>
-            <h1 id="dashboard-title">Seu corpo.<br><span>Seu progresso.</span></h1>
-            <p>Treino, dieta e evolução reunidos em uma experiência mais rápida, limpa e objetiva.</p>
-          </div>
-          <div class="hero-score">
-            <span>Meta</span>
-            <strong>98</strong>
-            <small>kg</small>
-          </div>
-        </article>
+    <main class="page home-page">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">PROGRAMA ATUAL</span>
+          <h1>Protocol Fitness <span>Treino.</span></h1>
+          <p>5 sessões por semana, progressão de carga e execução protegendo a coluna.</p>
+        </div>
+        <div class="hero-stat">
+          <strong id="weekPercent">0%</strong>
+          <span>da semana</span>
+        </div>
+      </section>
 
+      <section class="section-block" aria-labelledby="todayTitle">
         <div class="section-heading">
-          <div><span class="eyebrow">VISÃO GERAL</span><h2>Indicadores atuais</h2></div>
-          <span class="date-chip" id="todayLabel"></span>
+          <div>
+            <span class="eyebrow">SESSÃO DO DIA</span>
+            <h2 id="todayTitle">Treino de hoje</h2>
+          </div>
+          <span class="date-pill" id="todayDate"></span>
         </div>
-
-        <div class="metric-grid">
-          <article class="metric-card primary">
-            <div class="metric-icon">↘</div><span>Peso atual</span><strong id="pesoAtual">102,7 kg</strong>
-            <div class="metric-progress"><i id="pesoProgress"></i></div><small>Meta: 98 kg</small>
-          </article>
-          <article class="metric-card">
-            <div class="metric-icon">◎</div><span>Cintura</span><strong id="cinturaAtual">100 cm</strong><small>Meta: abaixo de 100 cm</small>
-          </article>
-          <article class="metric-card">
-            <div class="metric-icon">◇</div><span>Gordura visceral</span><strong>13</strong><small>Objetivo: reduzir</small>
-          </article>
-          <article class="metric-card">
-            <div class="metric-icon">⌁</div><span>Braço</span><strong>45,4 / 45,0</strong><small>Meta: pelo menos 45 cm</small>
-          </article>
-        </div>
-
-        <div class="dashboard-grid">
-          <article class="panel-card goals-card">
-            <div class="card-heading"><div><span class="eyebrow">60 DIAS</span><h3>Metas do ciclo</h3></div><span class="status-dot"></span></div>
-            <div class="goal-list">
-              <div><span>Peso</span><strong>98 kg</strong></div>
-              <div><span>Cintura</span><strong>&lt; 100 cm</strong></div>
-              <div><span>Braço</span><strong>≥ 45 cm</strong></div>
-              <div><span>Gordura visceral</span><strong>Reduzir</strong></div>
-            </div>
-          </article>
-
-          <article class="panel-card quick-card">
-            <div class="card-heading"><div><span class="eyebrow">REGISTRO</span><h3>Atualização rápida</h3></div></div>
-            <form id="quickForm" class="quick-form">
-              <label><span>Peso de hoje</span><div class="input-unit"><input id="pesoInput" type="number" step="0.1" inputmode="decimal" placeholder="Ex.: 101.8"><b>kg</b></div></label>
-              <label><span>Cintura</span><div class="input-unit"><input id="cinturaInput" type="number" step="0.1" inputmode="decimal" placeholder="Ex.: 99.2"><b>cm</b></div></label>
-              <button type="submit" class="primary-button">Salvar atualização <b>→</b></button>
-            </form>
-            <p class="helper-text">Os dados ficam salvos neste navegador.</p>
-          </article>
-        </div>
-
-        <button class="next-workout-card" data-tab-target="treino">
-          <div><span class="eyebrow">PRÓXIMA AÇÃO</span><h3>Continuar seu treino</h3><p id="nextWorkoutText">Escolha o dia e registre sua carga.</p></div>
-          <span class="next-arrow">→</span>
-        </button>
+        <div id="todayWorkout"></div>
       </section>
 
-      <section id="treino" class="tab-panel" aria-labelledby="treino-title">
-        <div class="page-hero compact">
-          <div><span class="eyebrow">PUSH/PULL • PERNAS</span><h1 id="treino-title">Treino da semana</h1><p>Registre a carga e marque cada exercício concluído.</p></div>
+      <section class="section-block" aria-labelledby="weekTitle">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">PLANEJAMENTO</span>
+            <h2 id="weekTitle">Sua semana</h2>
+          </div>
+          <a class="text-link" href="orientacoes.html">Regras</a>
         </div>
-
-        <article class="day-picker panel-card">
-          <label for="diaSelect">Escolha o dia</label>
-          <select id="diaSelect">
-            <option value="segunda">Segunda • Quadríceps</option>
-            <option value="terca">Terça • Push superior</option>
-            <option value="quarta">Quarta • Posteriores</option>
-            <option value="quinta">Quinta • Pull superior</option>
-            <option value="sexta">Sexta • Pernas mistas</option>
-          </select>
-        </article>
-
-        <article class="workout-cover" id="workoutCover">
-          <img id="workoutCoverImage" alt="">
-          <div class="workout-cover-copy"><span class="eyebrow" id="workoutDayLabel"></span><h2 id="workoutName"></h2><p id="workoutFocus"></p></div>
-        </article>
-
-        <article class="workout-summary panel-card">
-          <div><strong id="workoutProgressText">0 de 0 exercícios</strong><span>concluídos</span></div>
-          <b id="workoutProgressPercent">0%</b>
-          <div class="progress-track"><i id="workoutProgressBar"></i></div>
-        </article>
-
-        <div id="listaTreino" class="exercise-list"></div>
+        <div class="week-grid" id="weekGrid"></div>
       </section>
 
-      <section id="dieta" class="tab-panel" aria-labelledby="dieta-title">
-        <div class="page-hero compact">
-          <div><span class="eyebrow">PLANO ALIMENTAR</span><h1 id="dieta-title">Alimentação do dia</h1><p>Marque cada refeição concluída e acompanhe sua adesão.</p></div>
+      <section class="insight-card">
+        <div class="insight-icon">↗</div>
+        <div>
+          <span class="eyebrow">PROGRESSÃO</span>
+          <h3>Primeiro técnica, depois carga.</h3>
+          <p>Fez toda a faixa de repetições com execução boa? Aí sim sobe o peso na próxima sessão.</p>
         </div>
-
-        <article class="meal-progress panel-card">
-          <div><strong id="dietProgressText">0 de 7 refeições</strong><span>concluídas</span></div><b id="dietProgressPercent">0%</b>
-          <div class="progress-track"><i id="dietProgressBar"></i></div>
-        </article>
-        <div id="listaDieta" class="meal-list"></div>
-
-        <article class="supplement-card">
-          <div class="supplement-icon">＋</div>
-          <div><span class="eyebrow">SUPLEMENTAÇÃO</span><h3>Suporte diário</h3><p>Creatina 5 g diariamente • Whey para completar proteína • BCAA opcional • Hipercalórico apenas quando não houver refeição sólida.</p></div>
-        </article>
-      </section>
-
-      <section id="progresso" class="tab-panel" aria-labelledby="progresso-title">
-        <div class="page-hero compact">
-          <div><span class="eyebrow">EVOLUÇÃO</span><h1 id="progresso-title">Controle semanal</h1><p>Compare o ponto de partida com os registros mais recentes.</p></div>
-        </div>
-
-        <div class="baseline-grid">
-          <article class="baseline-card"><span>Registro inicial</span><strong>102,7 kg</strong></article>
-          <article class="baseline-card"><span>Cintura inicial</span><strong>100 cm</strong></article>
-          <article class="baseline-card"><span>Braço</span><strong>45,4 / 45,0 cm</strong></article>
-          <article class="baseline-card"><span>Coxa</span><strong>68,5 / 68,6 cm</strong></article>
-        </div>
-
-        <article class="panel-card history-card">
-          <div class="card-heading"><div><span class="eyebrow">HISTÓRICO</span><h3>Últimas atualizações</h3></div><button class="text-button" id="clearHistory">Limpar</button></div>
-          <div id="historyList" class="history-list"></div>
-        </article>
-
-        <article class="panel-card photos-card">
-          <div class="card-heading"><div><span class="eyebrow">FOTOS</span><h3>Comparação visual</h3></div></div>
-          <p>Adicione fotos de frente, perfil ou costas. As miniaturas ficam somente neste navegador.</p>
-          <label class="photo-upload"><input id="photoInput" type="file" accept="image/*" multiple><span>＋</span><strong>Adicionar fotos</strong><small>JPG, PNG ou WebP</small></label>
-          <div id="photoGrid" class="photo-grid"></div>
-        </article>
       </section>
     </main>
 
     <nav class="bottom-nav" aria-label="Navegação principal">
-      <button class="nav-item active" data-tab-target="dashboard" aria-label="Início"><span>⌂</span><small>Início</small></button>
-      <button class="nav-item" data-tab-target="treino" aria-label="Treino"><span>▦</span><small>Treino</small></button>
-      <button class="nav-item" data-tab-target="dieta" aria-label="Dieta"><span>◉</span><small>Dieta</small></button>
-      <button class="nav-item" data-tab-target="progresso" aria-label="Evolução"><span>↗</span><small>Evolução</small></button>
+      <a class="nav-item active" href="index.html"><span>⌂</span><small>Início</small></a>
+      <a class="nav-item" href="#weekTitle"><span>▦</span><small>Treino</small></a>
+      <a class="nav-item" href="progresso.html"><span>↗</span><small>Evolução</small></a>
+      <a class="nav-item" href="orientacoes.html"><span>◎</span><small>Regras</small></a>
     </nav>
-
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </div>
 
+  <script src="js/treino-data.js"></script>
+  <script src="js/storage.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
