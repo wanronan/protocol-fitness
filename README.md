@@ -1,75 +1,54 @@
-# Volume — App de Treino
+# Wanderson Performance v2
 
-Primeira versão do aplicativo de treino em HTML, CSS e JavaScript, pronta para GitHub Pages.
+Versão com treino automático pelo dia da semana e registro avançado.
 
-## O que já funciona
+## Novidades
 
-- Página inicial responsiva
-- Semana completa de treinos
-- Registro de carga e repetições
-- Conclusão série por série
+- Treino do dia em destaque na página inicial
+- Seleção automática de segunda a sexta
+- Fim de semana mostra recuperação e a próxima sessão
+- Registro de carga, repetições e RIR por série
+- Última carga usada por exercício
 - Cronômetro automático de descanso
-- Progresso semanal
-- Histórico salvo no navegador
-- Regras de execução e cuidados com a coluna
-- Instalação como PWA em navegadores compatíveis
+- Sugestão simples de progressão
+- Resumo da sessão, volume e recordes
+- Histórico de treinos concluídos
+- Dados antigos de carga continuam sendo usados como referência
 
-## Publicar no GitHub Pages
+## Publicar no GitHub
 
-1. Crie um repositório chamado `app-treino-volume`.
-2. Envie todos os arquivos desta pasta para a raiz do repositório.
-3. No GitHub, abra **Settings > Pages**.
-4. Em **Build and deployment**, escolha **Deploy from a branch**.
-5. Selecione a branch `main` e a pasta `/root`.
-6. Salve e aguarde a publicação.
-
-O endereço ficará parecido com:
-
-`https://SEU-USUARIO.github.io/app-treino-volume/`
-
-## Testar no computador
-
-A forma mais simples é usar a extensão **Live Server** no Visual Studio Code e abrir `index.html`.
-
-Também é possível abrir `index.html` diretamente. Os recursos principais funcionam, mas a instalação PWA exige um servidor HTTP.
-
-## Dados
-
-O treino está em:
-
-- `data/treino.json` — arquivo legível e editável
-- `js/treino-data.js` — cópia usada diretamente pelas páginas
-
-Quando alterar o treino, mantenha os dois arquivos sincronizados.
-
-## Próxima etapa sugerida
-
-Adicionar imagens profissionais de execução para cada exercício e uma tela individual com posição inicial, posição final e erros comuns.
+Envie todos os arquivos desta pasta para a raiz do repositório `wan-performance`, substituindo os antigos. Depois abra o site com `?v=2` ou pressione Ctrl+F5.
 
 
-## Ajustes v2
+## Correção do cache do GitHub Pages
 
-- Marca alterada para **PUSH/PULL PERFORMANCE**
-- Cards da semana com título maior
-- Tela de treino simplificada: nome do exercício, faixa fixa de séries/repetições, campo editável de peso e checkbox para marcar feito
+Versão: `20260716-2`
 
-
-## Ajuste de marca
-
-- Nome atualizado para **Protocol Fitness**
-- Logo enviada aplicada no cabeçalho e nos ícones do app
+O novo `index.html` já estava publicado, mas o `sw.js` antigo continuava entregando a página anterior salva no navegador. Esta versão:
+- troca o nome do cache;
+- busca o HTML novo primeiro;
+- força a atualização do service worker;
+- recarrega o app uma vez após a troca da versão.
 
 
-## Ajuste dos blocos
+## Versão 2.1
 
-- Novas imagens premium para Quadríceps, Push, Posterior, Pull e Pernas Completo
-- Ajuste de posicionamento das imagens nos cards
-- Ajuste de padding para evitar textos colados à esquerda
+Versão: `20260716-3`
+
+- repetições programadas aparecem automaticamente em cada série;
+- o campo continua editável para registrar o que realmente foi realizado;
+- exercícios com faixa usam como valor inicial o mínimo programado;
+- botão de cronômetro visível e ativo em cada exercício;
+- ao marcar a série como feita, o cronômetro continua iniciando automaticamente;
+- série pode ser concluída sem carga, útil para exercícios com peso corporal.
 
 
-## Ajuste da página Sua semana (v3)
+## Versão 3
+Versão: `20260716-4`
 
-- cards reorganizados
-- novas capas com nomes de arquivo atualizados para evitar cache antigo
-- service worker atualizado para forçar a nova versão
-- melhor alinhamento de texto e espaçamentos
+- indicadores alimentados pelo último registro de medidas;
+- meta calórica configurável;
+- dieta reiniciada automaticamente por data;
+- histórico e adesão dos últimos 7 dias;
+- formulário completo de medidas e gráfico de peso;
+- comparativos na página inicial.

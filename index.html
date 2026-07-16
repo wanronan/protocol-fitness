@@ -3,81 +3,229 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0A0D12">
-  <meta name="description" content="Treino de ganho de volume com prioridade em pernas.">
-  <title>Protocol Fitness</title>
-  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#071522">
+  <meta name="description" content="Wanderson Performance: treino, dieta e evolução.">
+  <title>Wanderson Performance</title>
+  <link rel="manifest" href="manifest.json?v=20260716-4">
+  <link rel="icon" href="assets/icons/icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260716-4">
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      
-      <a class="brand" href="index.html" aria-label="Página inicial">
-        <img class="brand-logo" src="assets/icons/protocol-fitness-logo.png" alt="Protocol Fitness">
-        <span><strong>PROTOCOL FITNESS</strong><small>TREINO E EVOLUÇÃO</small></span>
+      <a class="brand" href="#dashboard" data-tab-target="dashboard" aria-label="Início">
+        <span class="brand-symbol">WP</span>
+        <span class="brand-copy"><strong>WANDERSON PERFORMANCE</strong><small>TREINO • DIETA • EVOLUÇÃO</small></span>
       </a>
-      <button class="icon-button" id="installButton" hidden aria-label="Instalar aplicativo">＋</button>
+      <button class="install-btn" id="installButton" hidden aria-label="Instalar aplicativo">Instalar</button>
     </header>
 
-    <main class="page home-page">
-      <section class="hero">
-        <div class="hero-copy">
-          <span class="eyebrow">PROGRAMA ATUAL</span>
-          <h1>Protocol Fitness <span>Treino.</span></h1>
-          <p>5 sessões por semana, progressão de carga e execução protegendo a coluna.</p>
-        </div>
-        <div class="hero-stat">
-          <strong id="weekPercent">0%</strong>
-          <span>da semana</span>
-        </div>
-      </section>
-
-      <section class="section-block" aria-labelledby="todayTitle">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">SESSÃO DO DIA</span>
-            <h2 id="todayTitle">Treino de hoje</h2>
+    <main class="page">
+      <section id="dashboard" class="tab-panel active" aria-labelledby="dashboard-title">
+        <article class="hero-panel">
+          <div class="hero-copy">
+            <span class="eyebrow">PROTOCOLO ATUAL</span>
+            <h1 id="dashboard-title">Seu corpo.<br><span>Seu progresso.</span></h1>
+            <p>Treino, dieta e evolução reunidos em uma experiência rápida e objetiva.</p>
           </div>
-          <span class="date-pill" id="todayDate"></span>
-        </div>
-        <div id="todayWorkout"></div>
-      </section>
+          <div class="hero-score"><span>Meta</span><strong id="heroTargetWeight">98</strong><small>kg</small></div>
+        </article>
 
-      <section class="section-block" aria-labelledby="weekTitle">
         <div class="section-heading">
-          <div>
-            <span class="eyebrow">PLANEJAMENTO</span>
-            <h2 id="weekTitle">Sua semana</h2>
-          </div>
-          <a class="text-link" href="orientacoes.html">Regras</a>
+          <div><span class="eyebrow">HOJE</span><h2>Treino em destaque</h2></div>
+          <span class="date-chip" id="todayLabel"></span>
         </div>
-        <div class="week-grid" id="weekGrid"></div>
+        <article class="today-workout" id="todayWorkoutCard">
+          <img id="todayWorkoutImage" alt="">
+          <div class="today-workout-overlay"></div>
+          <div class="today-workout-copy">
+            <div class="today-workout-top"><span class="today-badge" id="todayWorkoutBadge">TREINO DO DIA</span><span id="todayWorkoutProgress">0%</span></div>
+            <span class="eyebrow" id="todayWorkoutDay"></span>
+            <h2 id="todayWorkoutName"></h2>
+            <p id="todayWorkoutFocus"></p>
+            <div class="today-meta" id="todayWorkoutMeta"></div>
+            <button class="primary-button today-start" id="todayWorkoutStart" data-tab-target="treino">Iniciar treino <b>→</b></button>
+          </div>
+        </article>
+
+        <div class="section-heading">
+          <div><span class="eyebrow">VISÃO GERAL</span><h2>Indicadores atuais</h2></div>
+          <button class="text-button" data-tab-target="progresso">Atualizar medidas</button>
+        </div>
+
+        <div class="metric-grid dashboard-metrics">
+          <article class="metric-card primary">
+            <div class="metric-icon">↘</div><span>Peso atual</span><strong id="pesoAtual">102,7 kg</strong>
+            <div class="metric-progress"><i id="pesoProgress"></i></div><small id="pesoMetaLabel">Meta: 98 kg</small><em id="pesoTrend">Sem comparação</em>
+          </article>
+          <article class="metric-card calorie-metric">
+            <div class="metric-icon">◴</div><span>Calorias de hoje</span><strong id="calorieCurrent">0 kcal</strong>
+            <div class="metric-progress"><i id="calorieProgress"></i></div><small id="calorieMetaLabel">Meta: configurar</small><em id="calorieRemaining">Aguardando refeições</em>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon">◎</div><span>Cintura</span><strong id="cinturaAtual">100 cm</strong>
+            <small id="cinturaMetaLabel">Meta: abaixo de 100 cm</small><em id="cinturaTrend">Sem comparação</em>
+          </article>
+          <article class="metric-card">
+            <div class="metric-icon">◇</div><span>Composição corporal</span><strong id="bodyFatCurrent">Não informado</strong>
+            <small>Gordura corporal</small><em id="visceralCurrent">Visceral: 13</em>
+          </article>
+        </div>
+
+        <article class="panel-card evolution-highlight">
+          <div class="card-heading"><div><span class="eyebrow">EVOLUÇÃO RECENTE</span><h3>Comparativo do último registro</h3></div><span id="lastMeasurementDate" class="date-chip">Sem registro</span></div>
+          <div class="evolution-mini-grid">
+            <div><span>Peso</span><strong id="homeWeightDelta">—</strong><small>vs. registro anterior</small></div>
+            <div><span>Cintura</span><strong id="homeWaistDelta">—</strong><small>vs. registro anterior</small></div>
+            <div><span>Gordura</span><strong id="homeFatDelta">—</strong><small>vs. registro anterior</small></div>
+            <div><span>Dieta 7 dias</span><strong id="homeDietAdherence">0%</strong><small>média de adesão</small></div>
+          </div>
+        </article>
+
+        <div class="dashboard-grid">
+          <article class="panel-card goals-card">
+            <div class="card-heading"><div><span class="eyebrow">METAS ATUAIS</span><h3>Objetivos do ciclo</h3></div><span class="status-dot"></span></div>
+            <div class="goal-list">
+              <div><span>Peso</span><strong id="goalWeightHome">98 kg</strong></div><div><span>Cintura</span><strong id="goalWaistHome">99 cm</strong></div>
+              <div><span>Gordura corporal</span><strong id="goalFatHome">Definir</strong></div><div><span>Calorias diárias</span><strong id="goalCaloriesHome">Definir</strong></div>
+            </div>
+          </article>
+          <article class="panel-card quick-card">
+            <div class="card-heading"><div><span class="eyebrow">REGISTRO RÁPIDO</span><h3>Atualização de hoje</h3></div></div>
+            <form id="quickForm" class="quick-form quick-form-grid">
+              <label><span>Peso</span><div class="input-unit"><input id="pesoInput" type="number" step="0.1" inputmode="decimal" placeholder="Ex.: 101.8"><b>kg</b></div></label>
+              <label><span>Cintura</span><div class="input-unit"><input id="cinturaInput" type="number" step="0.1" inputmode="decimal" placeholder="Ex.: 99.2"><b>cm</b></div></label>
+              <label><span>Gordura corporal</span><div class="input-unit"><input id="bodyFatInput" type="number" step="0.1" inputmode="decimal" placeholder="Ex.: 17.5"><b>%</b></div></label>
+              <label><span>Gordura visceral</span><div class="input-unit"><input id="visceralInput" type="number" step="0.1" inputmode="decimal" placeholder="Ex.: 12"><b>nível</b></div></label>
+              <button type="submit" class="primary-button quick-submit">Salvar atualização <b>→</b></button>
+            </form>
+            <p class="helper-text">Esse registro alimenta automaticamente a página inicial e os comparativos.</p>
+          </article>
+        </div>
       </section>
 
-      <section class="insight-card">
-        <div class="insight-icon">↗</div>
-        <div>
-          <span class="eyebrow">PROGRESSÃO</span>
-          <h3>Primeiro técnica, depois carga.</h3>
-          <p>Fez toda a faixa de repetições com execução boa? Aí sim sobe o peso na próxima sessão.</p>
+      <section id="treino" class="tab-panel" aria-labelledby="treino-title">
+        <div class="page-hero compact workout-page-hero">
+          <div><span class="eyebrow">PUSH/PULL • PERNAS</span><h1 id="treino-title">Treino do dia</h1><p id="autoDayMessage">O treino é selecionado automaticamente pelo dia da semana.</p></div>
+          <span class="auto-day-chip" id="autoDayChip">AUTOMÁTICO</span>
         </div>
+
+        <div class="day-tabs" id="dayTabs" aria-label="Dias de treino"></div>
+
+        <article class="workout-cover" id="workoutCover">
+          <img id="workoutCoverImage" alt="">
+          <div class="workout-cover-copy"><span class="eyebrow" id="workoutDayLabel"></span><h2 id="workoutName"></h2><p id="workoutFocus"></p></div>
+        </article>
+
+        <article class="workout-summary panel-card">
+          <div><strong id="workoutProgressText">0 de 0 séries</strong><span>concluídas</span></div>
+          <b id="workoutProgressPercent">0%</b>
+          <div class="progress-track"><i id="workoutProgressBar"></i></div>
+        </article>
+
+        <article class="workout-guidance panel-card">
+          <div><span class="eyebrow">META DA SESSÃO</span><h3>Supere o último treino sem perder a técnica.</h3></div>
+          <p>Registre carga, repetições e RIR. O app mostra a última carga e sugere progressão.</p>
+        </article>
+
+        <div id="listaTreino" class="exercise-list advanced"></div>
+        <button class="finish-workout-button" id="finishWorkout">Finalizar treino <span>→</span></button>
+      </section>
+
+      <section id="dieta" class="tab-panel" aria-labelledby="dieta-title">
+        <div class="page-hero compact diet-page-hero">
+          <div><span class="eyebrow">PLANO ALIMENTAR</span><h1 id="dieta-title">Alimentação do dia</h1><p>As marcações reiniciam automaticamente a cada novo dia, sem apagar o histórico.</p></div>
+          <span class="date-chip" id="dietDateLabel"></span>
+        </div>
+        <div class="diet-overview-grid">
+          <article class="meal-progress panel-card"><div><strong id="dietProgressText">0 de 7 refeições</strong><span>concluídas hoje</span></div><b id="dietProgressPercent">0%</b><div class="progress-track"><i id="dietProgressBar"></i></div></article>
+          <article class="panel-card calorie-summary-card">
+            <div class="calorie-summary-top"><div><span class="eyebrow">CALORIAS</span><strong id="dietCaloriesConsumed">0 kcal</strong></div><b id="dietCaloriesTarget">Meta não definida</b></div>
+            <div class="progress-track calorie-track"><i id="dietCaloriesBar"></i></div><p id="dietCaloriesRemaining">Defina sua meta calórica diária.</p>
+          </article>
+        </div>
+        <form id="calorieGoalForm" class="panel-card calorie-goal-form">
+          <div><span class="eyebrow">META DIÁRIA</span><h3>Calorias planejadas</h3><p>As calorias das refeições são estimativas e podem ser editadas.</p></div>
+          <label class="input-unit"><input id="calorieGoalInput" type="number" min="500" step="10" inputmode="numeric" placeholder="Ex.: 2500"><b>kcal</b></label>
+          <button type="submit" class="secondary-action">Salvar meta</button>
+        </form>
+        <div id="listaDieta" class="meal-list"></div>
+        <article class="panel-card diet-week-card"><div class="card-heading"><div><span class="eyebrow">ÚLTIMOS 7 DIAS</span><h3>Adesão alimentar</h3></div><strong id="dietWeekAverage">0%</strong></div><div id="dietWeekBars" class="diet-week-bars"></div></article>
+        <article class="supplement-card"><div class="supplement-icon">＋</div><div><span class="eyebrow">SUPLEMENTAÇÃO</span><h3>Suporte diário</h3><p>Creatina 5 g diariamente • Whey para completar proteína • BCAA opcional • Hipercalórico apenas quando não houver refeição sólida.</p></div></article>
+      </section>
+      <section id="progresso" class="tab-panel" aria-labelledby="progresso-title">
+        <div class="page-hero compact evolution-page-hero"><div><span class="eyebrow">EVOLUÇÃO</span><h1 id="progresso-title">Controle corporal</h1><p>Registre as medidas e compare com a avaliação anterior.</p></div><span class="auto-day-chip" id="measurementCount">0 registros</span></div>
+        <div class="baseline-grid evolution-current-grid">
+          <article class="baseline-card"><span>Peso atual</span><strong id="evolutionWeight">—</strong><small id="evolutionWeightDelta">Sem comparação</small></article>
+          <article class="baseline-card"><span>Cintura atual</span><strong id="evolutionWaist">—</strong><small id="evolutionWaistDelta">Sem comparação</small></article>
+          <article class="baseline-card"><span>Gordura corporal</span><strong id="evolutionFat">—</strong><small id="evolutionFatDelta">Sem comparação</small></article>
+          <article class="baseline-card"><span>Gordura visceral</span><strong id="evolutionVisceral">—</strong><small id="evolutionVisceralDelta">Sem comparação</small></article>
+        </div>
+        <article class="panel-card evolution-chart-card"><div class="card-heading"><div><span class="eyebrow">TENDÊNCIA</span><h3>Evolução do peso</h3></div><span>Últimos registros</span></div><div id="weightChart" class="weight-chart"></div></article>
+        <details class="panel-card measurement-entry" open>
+          <summary><div><span class="eyebrow">NOVA AVALIAÇÃO</span><h3>Registrar medidas</h3></div><span>⌄</span></summary>
+          <form id="measurementForm" class="measurement-form">
+            <label><span>Data</span><input id="measurementDate" name="date" type="date" required></label>
+            <label><span>Peso (kg)</span><input name="weight" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Cintura (cm)</span><input name="waist" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Abdômen (cm)</span><input name="abdomen" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Gordura corporal (%)</span><input name="bodyFat" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Gordura visceral</span><input name="visceral" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Peito (cm)</span><input name="chest" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Ombros (cm)</span><input name="shoulders" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Braço direito (cm)</span><input name="armRight" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Braço esquerdo (cm)</span><input name="armLeft" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Coxa direita (cm)</span><input name="thighRight" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Coxa esquerda (cm)</span><input name="thighLeft" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Panturrilha direita (cm)</span><input name="calfRight" type="number" step="0.1" inputmode="decimal"></label>
+            <label><span>Panturrilha esquerda (cm)</span><input name="calfLeft" type="number" step="0.1" inputmode="decimal"></label>
+            <label class="measurement-notes"><span>Observação</span><textarea name="notes" rows="3" placeholder="Ex.: avaliação em jejum"></textarea></label>
+            <button type="submit" class="primary-button measurement-submit">Salvar avaliação <b>→</b></button>
+          </form>
+        </details>
+        <article class="panel-card goals-settings-card"><div class="card-heading"><div><span class="eyebrow">CONFIGURAÇÃO</span><h3>Metas do ciclo</h3></div></div>
+          <form id="goalsForm" class="goals-form">
+            <label><span>Peso-meta</span><div class="input-unit"><input id="goalWeightInput" type="number" step="0.1"><b>kg</b></div></label>
+            <label><span>Cintura-meta</span><div class="input-unit"><input id="goalWaistInput" type="number" step="0.1"><b>cm</b></div></label>
+            <label><span>Gordura-meta</span><div class="input-unit"><input id="goalFatInput" type="number" step="0.1"><b>%</b></div></label>
+            <label><span>Calorias diárias</span><div class="input-unit"><input id="goalCaloriesInput" type="number" step="10"><b>kcal</b></div></label>
+            <button type="submit" class="secondary-action">Salvar metas</button>
+          </form>
+        </article>
+        <article class="panel-card history-card"><div class="card-heading"><div><span class="eyebrow">TREINOS</span><h3>Últimas sessões</h3></div></div><div id="workoutHistoryList" class="history-list"></div></article>
+        <article class="panel-card history-card"><div class="card-heading"><div><span class="eyebrow">MEDIDAS</span><h3>Histórico de avaliações</h3></div><button class="text-button" id="clearHistory">Limpar</button></div><div id="historyList" class="history-list measurement-history"></div></article>
+        <article class="panel-card photos-card"><div class="card-heading"><div><span class="eyebrow">FOTOS</span><h3>Comparação visual</h3></div></div><p>Adicione fotos de frente, perfil ou costas. As miniaturas ficam somente neste navegador.</p><label class="photo-upload"><input id="photoInput" type="file" accept="image/*" multiple><span>＋</span><strong>Adicionar fotos</strong><small>JPG, PNG ou WebP</small></label><div id="photoGrid" class="photo-grid"></div></article>
       </section>
     </main>
 
     <nav class="bottom-nav" aria-label="Navegação principal">
-      <a class="nav-item active" href="index.html"><span>⌂</span><small>Início</small></a>
-      <a class="nav-item" href="#weekTitle"><span>▦</span><small>Treino</small></a>
-      <a class="nav-item" href="progresso.html"><span>↗</span><small>Evolução</small></a>
-      <a class="nav-item" href="orientacoes.html"><span>◎</span><small>Regras</small></a>
+      <button class="nav-item active" data-tab-target="dashboard" aria-label="Início"><span>⌂</span><small>Início</small></button>
+      <button class="nav-item" data-tab-target="treino" aria-label="Treino"><span>▦</span><small>Treino</small></button>
+      <button class="nav-item" data-tab-target="dieta" aria-label="Dieta"><span>◉</span><small>Dieta</small></button>
+      <button class="nav-item" data-tab-target="progresso" aria-label="Evolução"><span>↗</span><small>Evolução</small></button>
     </nav>
-  </div>
 
-  <script src="js/treino-data.js"></script>
-  <script src="js/storage.js"></script>
-  <script src="js/app.js"></script>
+    <div class="rest-timer" id="restTimer" aria-hidden="true">
+      <div class="rest-timer-card">
+        <div class="timer-grip"></div><span class="eyebrow">DESCANSO</span><strong id="timerValue">01:30</strong><p id="timerContext">Prepare-se para a próxima série.</p>
+        <div class="timer-controls"><button data-timer-adjust="-15">−15s</button><button class="timer-main" id="timerToggle">Pausar</button><button data-timer-adjust="15">+15s</button></div>
+        <button class="timer-skip" id="timerSkip">Pular descanso</button>
+      </div>
+    </div>
+
+    <div class="session-modal" id="sessionModal" aria-hidden="true">
+      <div class="session-card">
+        <button class="modal-close" id="closeSessionModal">×</button>
+        <span class="eyebrow">SESSÃO CONCLUÍDA</span><h2>Resumo do treino</h2><div class="session-metrics" id="sessionMetrics"></div><div class="session-highlights" id="sessionHighlights"></div>
+        <button class="primary-button full" id="saveSessionButton">Salvar e ver evolução <b>→</b></button>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="js/app.js?v=20260716-4"></script>
 </body>
 </html>
