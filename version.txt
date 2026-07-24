@@ -1,3 +1,3 @@
-Wanderson Performance v3
-Versão: 20260716-4
-Indicadores dinâmicos, dieta diária e evolução comparativa.
+Protocol Fitness v4
+Versão: 20260724-1
+Reinício semanal automático toda segunda-feira; histórico preservado.
